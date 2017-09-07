@@ -2,7 +2,7 @@ package com.exec.business.handler.login
 
 import com.exec.business.dao.entity.UserEntity
 import com.exec.business.dao.service.UserService
-import com.exec.business.handler.api.Handler
+import com.exec.business.handler.api.LogHandler
 import com.exec.business.protocol.LoginRequest
 import com.exec.business.protocol.LoginResponse
 import com.exec.business.protocol.exception.UserNotFoundException
@@ -16,22 +16,23 @@ import org.springframework.stereotype.Component
  * Time: 22:37.
  */
 @Component
-open class LoginHandler : Handler<LoginRequest, LoginResponse> {
+open class LoginHandler : LogHandler<LoginRequest, LoginResponse>() {
 
     @Autowired
     private lateinit var userService: UserService
 
     override fun handle(request: LoginRequest): LoginResponse {
-        val userEntity: UserEntity = userService.findByEmail(request.login)
+        val user: UserEntity = userService.findByEmail(request.login)
                     ?: throw UserNotFoundException("User with email ${request.login} is not found.")
 
-        val userPassword = userEntity.password
+        val userPassword = user.password
 
         if (userPassword != request.password) {
-            throw WrongPasswordException("Password '" + request.password +
-                    "' is wrong for user with login '" + request.login + "'..")
+            LOG.error("Password '{}' is wrong for user with login '{}'..", request.password, request.login)
+            throw WrongPasswordException("Password '${request.password}' is wrong for user with login '${request.login}'..")
         }
 
+        LOG.info("Authenticated user {} {}({}).", user.firstName, user.lastName, user.email)
         return LoginResponse(token = "Bearer fdsiof20gg02gbnfswoiskvj52")
     }
 }
