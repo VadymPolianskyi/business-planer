@@ -9,6 +9,4 @@ import org.springframework.web.bind.annotation.ResponseStatus
  * Time: 22:51.
  */
 @ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "Password is wrong..")
-class WrongPasswordException(message: String) : RuntimeException(message) {
-
-}
+class WrongPasswordException(message: String) : RuntimeException(message)

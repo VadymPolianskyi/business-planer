@@ -1,7 +1,7 @@
 package com.exec.business.controller
 
-import com.exec.business.handler.LoginHandler
-import com.exec.business.handler.RegisterHandler
+import com.exec.business.handler.login.LoginHandler
+import com.exec.business.handler.login.RegisterHandler
 import com.exec.business.protocol.LoginRequest
 import com.exec.business.protocol.RegisterRequest
 import com.exec.business.protocol.api.Response
