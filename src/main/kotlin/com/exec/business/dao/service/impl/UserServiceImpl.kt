@@ -3,6 +3,7 @@ package com.exec.business.dao.service.impl
 import com.exec.business.dao.entity.UserEntity
 import com.exec.business.dao.repository.UserRepository
 import com.exec.business.dao.service.UserService
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 
 /**
@@ -11,7 +12,10 @@ import org.springframework.stereotype.Component
  * Time: 22:09.
  */
 @Component
-class UserServiceImpl(private val repository: UserRepository) : UserService {
+open class UserServiceImpl : UserService {
+
+    @Autowired
+    private lateinit var repository: UserRepository
 
     override fun findByEmail(email: String): UserEntity? {
         return repository.findByEmail(email)
