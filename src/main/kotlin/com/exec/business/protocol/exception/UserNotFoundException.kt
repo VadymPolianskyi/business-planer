@@ -9,6 +9,4 @@ import org.springframework.web.bind.annotation.ResponseStatus
  * Time: 22:51.
  */
 @ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "User isn't found.")
-class UserNotFoundException(message: String) : RuntimeException(message) {
-
-}
+class UserNotFoundException(message: String) : RuntimeException(message)
