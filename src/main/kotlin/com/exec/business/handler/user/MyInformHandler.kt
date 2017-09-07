@@ -3,6 +3,7 @@ package com.exec.business.handler.user
 import com.exec.business.dao.entity.UserEntity
 import com.exec.business.dao.service.UserService
 import com.exec.business.handler.api.Handler
+import com.exec.business.handler.api.LogHandler
 import com.exec.business.protocol.MyInformRequest
 import com.exec.business.protocol.MyInformResponse
 import com.exec.business.protocol.api.Request
@@ -18,7 +19,7 @@ import org.springframework.stereotype.Component
  * Time: 9:53
  */
 @Component
-open class MyInformHandler : Handler<MyInformRequest, MyInformResponse> {
+open class MyInformHandler : LogHandler<MyInformRequest, MyInformResponse>() {
 
     @Autowired
     private lateinit var userService: UserService
@@ -28,11 +29,15 @@ open class MyInformHandler : Handler<MyInformRequest, MyInformResponse> {
     override fun handle(request: MyInformRequest): MyInformResponse {
         val userId: String = request.rotingData.userId
 
-        val user: UserEntity = userService.findById(userId)
-                ?: throw UserNotFoundException("User with id $userId is not found.")
+        val user: UserEntity? = userService.findById(userId)
 
+        if (user == null) {
+            LOG.error("User with id $userId is not found.")
+            throw UserNotFoundException("User with id $userId is not found.")
+        }
         val responseUser: UserDTO = mapper.mapUser(user)
 
+        LOG.info("User {} {}({}) got own information.", user.firstName, user.lastName, user.email)
         return MyInformResponse(userDTO = responseUser)
     }
 }

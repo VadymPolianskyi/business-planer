@@ -2,6 +2,7 @@ package com.exec.business.handler.login
 
 import com.exec.business.dao.service.UserService
 import com.exec.business.handler.api.Handler
+import com.exec.business.handler.api.LogHandler
 import com.exec.business.protocol.RegisterRequest
 import com.exec.business.protocol.RegisterResponse
 import com.exec.business.util.Mapper
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Component
  * Time: 8:22.
  */
 @Component
-class RegisterHandler : Handler<RegisterRequest, RegisterResponse> {
+class RegisterHandler : LogHandler<RegisterRequest, RegisterResponse>() {
 
     @Autowired
     private lateinit var userService: UserService
@@ -23,11 +24,12 @@ class RegisterHandler : Handler<RegisterRequest, RegisterResponse> {
 
     override fun handle(request: RegisterRequest): RegisterResponse {
 
-        val userEntity = mapper.revertUser(request.userDTO)
-        userEntity.password = request.password
+        val user = mapper.revertUser(request.userDTO)
+        user.password = request.password
 
-        userService.save(userEntity)
+        userService.save(user)
 
+        LOG.info("Registered new user {} {}({})." + user.firstName, user.lastName, user.email)
         return RegisterResponse(token = "Bearer fdsjfiogj2gj03godf0jg03rg")
     }
 }
