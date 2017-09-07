@@ -11,9 +11,8 @@ import org.springframework.stereotype.Component
  * Time: 22:30.
  */
 @Component
-class Mapper (
-        private val mapper: ModelMapper = ModelMapper()
-) {
+class Mapper {
+    private val mapper: ModelMapper = ModelMapper()
 
     fun mapUser(userEntity: UserEntity): UserDTO {
         return mapper.map(userEntity, UserDTO::class.java)

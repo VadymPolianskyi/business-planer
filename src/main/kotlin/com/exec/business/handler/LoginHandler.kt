@@ -2,10 +2,12 @@ package com.exec.business.handler
 
 import com.exec.business.dao.entity.UserEntity
 import com.exec.business.dao.service.UserService
+import com.exec.business.handler.api.Handler
 import com.exec.business.protocol.LoginRequest
 import com.exec.business.protocol.LoginResponse
 import com.exec.business.protocol.exception.UserNotFoundException
 import com.exec.business.protocol.exception.WrongPasswordException
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 
 /**
@@ -14,9 +16,10 @@ import org.springframework.stereotype.Component
  * Time: 22:37.
  */
 @Component
-class LoginHandler (
-        private val userService: UserService
-        ) : Handler<LoginRequest, LoginResponse> {
+open class LoginHandler : Handler<LoginRequest, LoginResponse> {
+
+    @Autowired
+    private lateinit var userService: UserService
 
     override fun handle(request: LoginRequest): LoginResponse {
         val userEntity: UserEntity = userService.findByEmail(request.login)
