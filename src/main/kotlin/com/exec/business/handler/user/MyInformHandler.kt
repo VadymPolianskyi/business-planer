@@ -2,11 +2,9 @@ package com.exec.business.handler.user
 
 import com.exec.business.dao.entity.UserEntity
 import com.exec.business.dao.service.UserService
-import com.exec.business.handler.api.Handler
 import com.exec.business.handler.api.LogHandler
 import com.exec.business.protocol.MyInformRequest
 import com.exec.business.protocol.MyInformResponse
-import com.exec.business.protocol.api.Request
 import com.exec.business.protocol.dto.UserDTO
 import com.exec.business.protocol.exception.UserNotFoundException
 import com.exec.business.util.Mapper
@@ -27,7 +25,7 @@ open class MyInformHandler : LogHandler<MyInformRequest, MyInformResponse>() {
     private lateinit var mapper: Mapper
 
     override fun handle(request: MyInformRequest): MyInformResponse {
-        val userId: String = request.rotingData.userId
+        val userId: String = request.rotingData.credentials.login
 
         val user: UserEntity? = userService.findById(userId)
 

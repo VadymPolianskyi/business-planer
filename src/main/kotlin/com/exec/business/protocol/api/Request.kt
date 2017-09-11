@@ -1,5 +1,7 @@
 package com.exec.business.protocol.api
 
+import com.exec.business.config.auth.AccountCredentials
+
 /**
  * Author: Vadym Polyanski;
  * Date: 06.09.17;
@@ -10,5 +12,5 @@ abstract class Request {
 }
 
 data class RotingData(
-        val userId: String
+        val credentials: AccountCredentials
 )

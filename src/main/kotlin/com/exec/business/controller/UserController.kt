@@ -1,10 +1,12 @@
 package com.exec.business.controller
 
+import com.exec.business.config.auth.AccountCredentials
 import com.exec.business.handler.user.MyInformHandler
 import com.exec.business.protocol.MyInformRequest
 import com.exec.business.protocol.api.Response
 import com.exec.business.protocol.api.RotingData
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -22,7 +24,7 @@ class UserController {
     private lateinit var myInformHandler: MyInformHandler
 
     @GetMapping
-    fun myInform(): Response {
-        return myInformHandler.handle(MyInformRequest(rotingData = RotingData("userId"))) //todo: correct rotingData support in filters
+    fun myInform(@AuthenticationPrincipal credentials: AccountCredentials?): Response {
+        return myInformHandler.handle(MyInformRequest(rotingData = RotingData(credentials!!)))//todo: make it working
     }
 }
