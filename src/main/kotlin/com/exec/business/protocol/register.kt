@@ -10,7 +10,7 @@ import com.exec.business.protocol.dto.UserDTO
  * Date: 07.09.17
  * Time: 9:43
  */
-data class RegisterRequest(
+data class RegisterRequest (
         val userDTO: UserDTO,
         val password: String,
         override val rotingData: RotingData?
@@ -18,5 +18,8 @@ data class RegisterRequest(
 
 
 data class RegisterResponse(
-        val token: String
+        val token: String,
+        val type: String,
+        val expiresIn: Int,
+        val refresh: String
 ) : Response()

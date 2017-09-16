@@ -14,7 +14,7 @@ class UserEntity(
         @Id
         @GenericGenerator(name = "uuid_generator", strategy = "uuid2")
         @GeneratedValue(generator = "uuid_generator")
-        var id: String,
+        var id: String?,
 
         @Column(name = "first_name")
         var firstName: String?,

@@ -7,10 +7,10 @@ package com.exec.business.protocol.dto
  */
 
 data class UserDTO(
+        val id: String?,
         val firstName: String?,
         val lastName: String?,
         val age: Int?,
         val sex: String?,
-        val email: String?,
-        val password: String?
+        val email: String?
 )

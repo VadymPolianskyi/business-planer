@@ -26,12 +26,15 @@ import javax.sql.DataSource
  */
 @Configuration
 @EnableAuthorizationServer
-open class AuthorizationServer
+open class AuthorizationServer: AuthorizationServerConfigurerAdapter() {
+
+
     @Autowired
-    constructor(
-        private val authenticationManager: AuthenticationManager,
-        private val userDetailsService: UserDetailsService,
-        private val dataSource: DataSource) : AuthorizationServerConfigurerAdapter() {
+    private lateinit var authenticationManager: AuthenticationManager
+    @Autowired
+    private lateinit var userDetailsService: UserDetailsService
+    @Autowired
+    private lateinit var dataSource: DataSource
 
 
     @Value("\${token.validity.seconds}")

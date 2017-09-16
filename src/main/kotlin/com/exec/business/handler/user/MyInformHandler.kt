@@ -25,7 +25,7 @@ open class MyInformHandler : LogHandler<MyInformRequest, MyInformResponse>() {
     private lateinit var mapper: Mapper
 
     override fun handle(request: MyInformRequest): MyInformResponse {
-        val userId: String = request.rotingData.credentials.login
+        val userId: String = request.rotingData.credentials!!.username
 
         val user: UserEntity? = userService.findById(userId)
 

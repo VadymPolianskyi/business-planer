@@ -2,7 +2,6 @@ package com.exec.business.util
 
 import com.exec.business.dao.entity.UserEntity
 import com.exec.business.protocol.dto.UserDTO
-import org.modelmapper.ModelMapper
 import org.springframework.stereotype.Component
 
 /**
@@ -11,14 +10,25 @@ import org.springframework.stereotype.Component
  * Time: 22:30.
  */
 @Component
-class Mapper {
-    private val mapper: ModelMapper = ModelMapper()
+open class Mapper {
 
-    fun mapUser(userEntity: UserEntity): UserDTO {
-        return mapper.map(userEntity, UserDTO::class.java)
-    }
+    fun mapUser(entity: UserEntity): UserDTO = UserDTO(
+            id = entity.id,
+            firstName = entity.firstName,
+            lastName = entity.lastName,
+            age = entity.age,
+            email = entity.email,
+            sex = entity.sex
+    )
 
-    fun revertUser(userDTO: UserDTO): UserEntity {
-        return mapper.map(userDTO, UserEntity::class.java)
-    }
+    fun revertUser(dto: UserDTO): UserEntity = UserEntity(
+            id = dto.id,
+            firstName = dto.firstName,
+            lastName = dto.lastName,
+            age = dto.age,
+            email = dto.email,
+            sex = dto.sex,
+            password = null
+    )
+
 }

@@ -1,6 +1,6 @@
 package com.exec.business.protocol.api
 
-import com.exec.business.config.auth.AccountCredentials
+import org.springframework.data.authentication.UserCredentials
 
 /**
  * Author: Vadym Polyanski;
@@ -12,5 +12,5 @@ abstract class Request {
 }
 
 data class RotingData(
-        val credentials: AccountCredentials
+        val credentials: UserCredentials?
 )
