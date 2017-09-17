@@ -26,7 +26,7 @@ import javax.sql.DataSource
  */
 @Configuration
 @EnableAuthorizationServer
-open class AuthorizationServer: AuthorizationServerConfigurerAdapter() {
+open class AuthorizationServerConfig: AuthorizationServerConfigurerAdapter() {
 
 
     @Autowired

@@ -1,11 +1,13 @@
 package com.exec.business.config
 
+import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
-
 
 /**
  * Author: Vadym Polyanski;
@@ -14,11 +16,22 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  */
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 open class SecurityConfiguration : WebSecurityConfigurerAdapter() {
+
+
+    @Bean
+    @Throws(Exception::class)
+    override fun authenticationManagerBean(): AuthenticationManager {
+        return super.authenticationManagerBean()
+    }
 
     override fun configure(http: HttpSecurity) {
         http.csrf().disable().authorizeRequests()
-                .antMatchers("/").permitAll()
+                .antMatchers("/login/**").permitAll()
+                .anyRequest().authenticated().and().httpBasic()
+        http.headers().frameOptions().disable() //for h2 console work;
+        http.csrf().disable()
     }
 
     @Throws(Exception::class)
@@ -26,7 +39,7 @@ open class SecurityConfiguration : WebSecurityConfigurerAdapter() {
         auth!!.inMemoryAuthentication()
                 .withUser("admin")
                 .password("password")
-                .roles("ADMIN")
+                .roles("USER ")
     }
 
 }
