@@ -24,7 +24,7 @@ class UserController {
     private lateinit var myInformHandler: MyInformHandler
 
     @GetMapping
-    fun myInform(@AuthenticationPrincipal credentials: UserCredentials?): Response {
-        return myInformHandler.handle(MyInformRequest(rotingData = RotingData(credentials!!)))//todo: make it working
+    fun myInform(@AuthenticationPrincipal credentials: UserCredentials): Response {
+        return myInformHandler.handle(MyInformRequest(rotingData = RotingData(credentials)))//todo: make credentials not null
     }
 }

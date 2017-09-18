@@ -26,9 +26,15 @@ open class SecurityConfiguration : WebSecurityConfigurerAdapter() {
         return super.authenticationManagerBean()
     }
 
-    override fun configure(http: HttpSecurity) {
-        http.csrf().disable().authorizeRequests()
-                .antMatchers("/login/**").permitAll()
+
+    @Throws(Exception::class)
+    public override fun configure(http: HttpSecurity) {
+        http.requestMatchers()
+                .antMatchers("/login/**", "/console/**")
+                .and().formLogin()
+                .and()
+                .authorizeRequests()
+                .antMatchers("/login/**", "/console/**").permitAll()
                 .anyRequest().authenticated().and().httpBasic()
         http.headers().frameOptions().disable() //for h2 console work;
         http.csrf().disable()

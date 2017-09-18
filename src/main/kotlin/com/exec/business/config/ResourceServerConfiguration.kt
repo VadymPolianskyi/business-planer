@@ -15,10 +15,10 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 open class ResourceServerConfiguration : ResourceServerConfigurerAdapter() {
 
     @Throws(Exception::class)
-    override fun configure(http: HttpSecurity?) {
-        http!!.cors().and()
+    override fun configure(http: HttpSecurity) {
+        http.cors().and()
                 .csrf().disable().authorizeRequests()
-                .antMatchers("/login/**").permitAll()
+                .antMatchers("/login/**", "/console/**").permitAll()
                 .anyRequest().authenticated().and()
                 .formLogin().and().httpBasic()
         http.headers().frameOptions().disable()//for h2 console work;
