@@ -25,7 +25,7 @@ open class MyInformHandler : LogHandler<MyInformRequest, MyInformResponse>() {
     private lateinit var mapper: Mapper
 
     override fun handle(request: MyInformRequest): MyInformResponse {
-        val userId: String = request.rotingData.credentials!!.username
+        val userId = request.rotingData.credentials!!.username
 
         val user: UserEntity? = userService.findById(userId)
 
@@ -33,6 +33,8 @@ open class MyInformHandler : LogHandler<MyInformRequest, MyInformResponse>() {
             LOG.error("User with id $userId is not found.")
             throw UserNotFoundException("User with id $userId is not found.")
         }
+
+
         val responseUser: UserDTO = mapper.mapUser(user)
 
         LOG.info("User {} {}({}) got own information.", user.firstName, user.lastName, user.email)

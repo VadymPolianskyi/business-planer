@@ -14,23 +14,23 @@ class UserEntity(
         @Id
         @GenericGenerator(name = "uuid_generator", strategy = "uuid2")
         @GeneratedValue(generator = "uuid_generator")
-        var id: String?,
+        var id: String? = null,
 
         @Column(name = "first_name")
-        var firstName: String?,
+        var firstName: String? = null,
 
         @Column(name = "last_name")
-        var lastName: String?,
+        var lastName: String? = null,
 
         @Column(name = "age")
-        var age: Int?,
+        var age: Int? = null,
 
         @Column(name = "sex")
-        var sex: String?,
+        var sex: String? = null,
 
         @Column(name = "email")
-        var email: String?,
+        var email: String? = null,
 
         @Column(name = "password")
-        var password: String?
+        var password: String? = null
 )

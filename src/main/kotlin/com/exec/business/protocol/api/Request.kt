@@ -1,6 +1,7 @@
 package com.exec.business.protocol.api
 
-import org.springframework.data.authentication.UserCredentials
+import com.exec.business.dao.entity.secure.UserCredentials
+
 
 /**
  * Author: Vadym Polyanski;
