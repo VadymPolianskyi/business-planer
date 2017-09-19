@@ -1,6 +1,6 @@
 package com.exec.business.handler.login
 
-import com.exec.business.config.auth.AuthService
+import com.exec.business.util.auth.AuthService
 import com.exec.business.dao.entity.secure.UserCredentials
 import com.exec.business.dao.repository.UserDetailsRepository
 import com.exec.business.dao.service.UserService

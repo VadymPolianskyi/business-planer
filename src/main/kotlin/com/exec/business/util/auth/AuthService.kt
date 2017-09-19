@@ -1,4 +1,4 @@
-package com.exec.business.config.auth
+package com.exec.business.util.auth
 
 import com.exec.business.protocol.exception.UserNotFoundException
 import org.springframework.security.oauth2.common.OAuth2AccessToken

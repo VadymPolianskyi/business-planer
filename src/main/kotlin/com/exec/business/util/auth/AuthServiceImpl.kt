@@ -1,4 +1,4 @@
-package com.exec.business.config.auth
+package com.exec.business.util.auth
 
 import com.exec.business.protocol.exception.UserNotFoundException
 import org.springframework.beans.factory.annotation.Autowired

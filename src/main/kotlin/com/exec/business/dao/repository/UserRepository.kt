@@ -9,6 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository
  * Time: 21:58.
  */
 
-interface UserRepository: JpaRepository<UserEntity, String> {
+interface UserRepository: BaseRepository<UserEntity> {
     fun findByEmail(email: String) : UserEntity?
 }

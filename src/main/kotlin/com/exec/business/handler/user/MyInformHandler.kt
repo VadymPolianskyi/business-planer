@@ -27,13 +27,12 @@ open class MyInformHandler : LogHandler<MyInformRequest, MyInformResponse>() {
     override fun handle(request: MyInformRequest): MyInformResponse {
         val userId = request.rotingData.credentials!!.username
 
-        val user: UserEntity? = userService.findById(userId)
+        val user: UserEntity? = userService.getById(userId)
 
         if (user == null) {
             LOG.error("User with id $userId is not found.")
             throw UserNotFoundException("User with id $userId is not found.")
         }
-
 
         val responseUser: UserDTO = mapper.mapUser(user)
 

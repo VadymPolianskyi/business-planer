@@ -1,4 +1,4 @@
-package com.exec.business.config.auth
+package com.exec.business.util.auth
 
 import org.springframework.security.oauth2.common.OAuth2AccessToken
 

@@ -1,5 +1,6 @@
 package com.exec.business.dao.entity
 
+import com.exec.business.dao.entity.api.BaseEntity
 import org.hibernate.annotations.GenericGenerator
 import javax.persistence.*
 
@@ -10,12 +11,8 @@ import javax.persistence.*
  */
 
 @Entity
+@Table(name = "user")
 class UserEntity(
-        @Id
-        @GenericGenerator(name = "uuid_generator", strategy = "uuid2")
-        @GeneratedValue(generator = "uuid_generator")
-        var id: String? = null,
-
         @Column(name = "first_name")
         var firstName: String? = null,
 
@@ -33,4 +30,4 @@ class UserEntity(
 
         @Column(name = "password")
         var password: String? = null
-)
+) : BaseEntity()
