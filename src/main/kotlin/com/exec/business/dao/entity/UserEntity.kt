@@ -13,6 +13,10 @@ import javax.persistence.*
 @Entity
 @Table(name = "user")
 class UserEntity(
+
+
+        override var id : String?,
+
         @Column(name = "first_name")
         var firstName: String? = null,
 
@@ -30,4 +34,4 @@ class UserEntity(
 
         @Column(name = "password")
         var password: String? = null
-) : BaseEntity()
+) : BaseEntity(id)

@@ -15,5 +15,5 @@ open class BaseEntity(
         @Id
         @GenericGenerator(name = "uuid_generator", strategy = "uuid2")
         @GeneratedValue(generator = "uuid_generator")
-        var id: String? = null
+        open var id: String? = null
 )

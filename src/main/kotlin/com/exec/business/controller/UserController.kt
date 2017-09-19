@@ -1,6 +1,7 @@
 package com.exec.business.controller
 
 import com.exec.business.dao.entity.secure.UserCredentials
+import com.exec.business.handler.factory.Factory
 import com.exec.business.handler.user.MyInformHandler
 import com.exec.business.protocol.MyInformRequest
 import com.exec.business.protocol.api.Response
@@ -21,10 +22,10 @@ import org.springframework.web.bind.annotation.RestController
 class UserController {
 
     @Autowired
-    private lateinit var myInformHandler: MyInformHandler
+    private lateinit var factory: Factory
 
     @GetMapping
     fun myInform(@AuthenticationPrincipal credentials: UserCredentials): Response {
-        return myInformHandler.handle(MyInformRequest(rotingData = RotingData(credentials)))
+        return factory.get(MyInformHandler::class.java).handle(MyInformRequest(rotingData = RotingData(credentials)))
     }
 }

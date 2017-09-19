@@ -1,5 +1,6 @@
 package com.exec.business.controller
 
+import com.exec.business.handler.factory.Factory
 import com.exec.business.handler.login.LoginHandler
 import com.exec.business.handler.login.RegisterHandler
 import com.exec.business.protocol.LoginRequest
@@ -21,18 +22,16 @@ import org.springframework.web.bind.annotation.RestController
 class LoginController {
 
     @Autowired
-    private lateinit var loginHandler: LoginHandler
-    @Autowired
-    private lateinit var registerHandler: RegisterHandler
+    private lateinit var factory: Factory
 
     @PostMapping
     fun login(@RequestBody request: LoginRequest): Response {
-        return loginHandler.handle(request)
+        return factory.get(LoginHandler::class.java).handle(request)
     }
 
     @PostMapping("/register")
     fun register(@RequestBody request: RegisterRequest): Response {
-        return registerHandler.handle(request)
+        return factory.get(RegisterHandler::class.java).handle(request)
     }
 
 }
