@@ -1,12 +1,9 @@
 package com.exec.business.handler.user
 
 import com.exec.business.dao.entity.UserEntity
-import com.exec.business.dao.service.UserService
-import com.exec.business.handler.api.LogHandler
 import com.exec.business.protocol.MyInformRequest
 import com.exec.business.protocol.MyInformResponse
 import com.exec.business.protocol.dto.UserDTO
-import com.exec.business.protocol.exception.UserNotFoundException
 import com.exec.business.util.Mapper
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
@@ -17,22 +14,16 @@ import org.springframework.stereotype.Component
  * Time: 9:53
  */
 @Component
-open class MyInformHandler : LogHandler<MyInformRequest, MyInformResponse>() {
+open class MyInformHandler : UserHandler<MyInformRequest, MyInformResponse>() {
 
-    @Autowired
-    private lateinit var userService: UserService
     @Autowired
     private lateinit var mapper: Mapper
 
     override fun handle(request: MyInformRequest): MyInformResponse {
         val userId = request.rotingData.credentials!!.username
 
-        val user: UserEntity? = userService.getById(userId)
+        val user: UserEntity = getUser(userId)
 
-        if (user == null) {
-            LOG.error("User with id $userId is not found.")
-            throw UserNotFoundException("User with id $userId is not found.")
-        }
 
         val responseUser: UserDTO = mapper.mapUser(user)
 

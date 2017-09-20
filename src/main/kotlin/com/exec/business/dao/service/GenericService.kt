@@ -30,7 +30,7 @@ abstract class GenericService<E : BaseEntity, R : BaseRepository<E>> {
         return repository.findAll()
     }
 
-    fun getById(id: String): E {
+    fun getById(id: String): E? {
         return repository.findOne(id)
     }
 }

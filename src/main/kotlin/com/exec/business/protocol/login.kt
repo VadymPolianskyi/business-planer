@@ -16,5 +16,8 @@ data class LoginRequest (
 ): Request()
 
 data class LoginResponse(
-        val token: String
+        val token: String,
+        val type: String,
+        val expiresIn: Int,
+        val refresh: String
 ) : Response()
