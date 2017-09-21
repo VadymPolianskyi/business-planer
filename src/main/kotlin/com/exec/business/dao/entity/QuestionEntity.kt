@@ -20,6 +20,9 @@ class QuestionEntity(
         @Column(name = "priority")
         var priority: Int? = null,
 
+        @Column(name = "answer")
+        var answer: String? = null,
+
         @Enumerated(EnumType.STRING)
         var type: PlanStep
 
