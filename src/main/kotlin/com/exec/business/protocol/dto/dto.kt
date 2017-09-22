@@ -28,7 +28,7 @@ data class BusinessDTO(
 
 data class QuestionDTO(
         val id: String?,
-        var name: String?,
+        var priority: Int?,
         var answer: String?,
         var type: PlanStep?
 )
