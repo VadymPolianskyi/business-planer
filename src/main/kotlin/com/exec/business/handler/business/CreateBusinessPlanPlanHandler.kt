@@ -16,9 +16,9 @@ open class CreateBusinessPlanPlanHandler : BusinessPlanHandler<CreateBusinessPla
     override fun handle(request: CreateBusinessPlanRequest): CreateBusinessPlanResponse {
         val user: UserEntity = getUser(request.rotingData.credentials!!.id)
 
-        val businessPlan = mapper.revertBusiness(request.businessPlan)
+        val businessPlan = mapper.revertBusinessPlan(request.businessPlan)
 
-        businessService.save(businessPlan)
+        businessPlanService.save(businessPlan)
 
         LOG.info("User ${user.lastName}(${user.email}) created new business plan (plan id - ${businessPlan.id}).")
         return CreateBusinessPlanResponse()

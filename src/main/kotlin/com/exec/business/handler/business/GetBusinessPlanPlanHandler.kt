@@ -19,7 +19,7 @@ open class GetBusinessPlanPlanHandler : BusinessPlanHandler<GetBusinessPlanReque
         val businessPlan = getBusiness(request.planId)
 
         LOG.info("User ${user.lastName}(${user.email}) got his business plan (plan id - ${businessPlan.id}).")
-        return GetBusinessPlanResponse(businessPlan = mapper.mapBusiness(businessPlan))
+        return GetBusinessPlanResponse(businessPlan = mapper.mapBusinessPlan(businessPlan))
     }
 
 }

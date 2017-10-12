@@ -36,18 +36,18 @@ open class Mapper {
             password = null
     )
 
-    fun mapBusiness(planEntity: BusinessPlanEntity): BusinessPlanDTO = BusinessPlanDTO(
-            id = planEntity.id,
-            name = planEntity.name,
-            description = planEntity.description,
-            owner = planEntity.owner!!.id,
-            questions = planEntity.questions!!.stream().map { question -> mapQuestion(question) }.toList()
+    fun mapBusinessPlan(entity: BusinessPlanEntity): BusinessPlanDTO = BusinessPlanDTO(
+            id = entity.id,
+            name = entity.name,
+            description = entity.description,
+            owner = entity.owner!!.id,
+            questions = entity.questions!!.stream().map { question -> mapQuestion(question) }.toList()
     )
 
-    fun revertBusiness(planDto: BusinessPlanDTO): BusinessPlanEntity = BusinessPlanEntity(
-            id = planDto.id,
-            name = planDto.name,
-            description = planDto.description
+    fun revertBusinessPlan(dto: BusinessPlanDTO): BusinessPlanEntity = BusinessPlanEntity(
+            id = dto.id,
+            name = dto.name,
+            description = dto.description
     )
 
     fun mapQuestion(entity: QuestionEntity): QuestionDTO = QuestionDTO(

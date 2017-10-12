@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component
  * Time: 21:31.
  */
 @Component
-open class BusinessService : GenericService<BusinessPlanEntity, BusinessRepository>() {
+open class BusinessPlanService : GenericService<BusinessPlanEntity, BusinessRepository>() {
     fun findByOwner(owner: String): List<BusinessPlanEntity> {
         return repository.findByOwner(owner)
     }

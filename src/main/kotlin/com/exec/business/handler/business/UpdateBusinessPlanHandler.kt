@@ -18,9 +18,9 @@ open class UpdateBusinessPlanHandler: BusinessPlanHandler<UpdateBusinessPlanRequ
 
         getBusiness(request.businessPlan.id!!)
 
-        val businessPlan = mapper.revertBusiness(request.businessPlan)
+        val businessPlan = mapper.revertBusinessPlan(request.businessPlan)
 
-        businessService.update(businessPlan)
+        businessPlanService.update(businessPlan)
 
         LOG.info("User ${user.lastName}(${user.email}) updated his business plan (plan id - ${businessPlan.id}).")
         return UpdateBusinessPlanResponse()

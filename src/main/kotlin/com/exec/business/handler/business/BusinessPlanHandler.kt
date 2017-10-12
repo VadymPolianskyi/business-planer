@@ -1,7 +1,7 @@
 package com.exec.business.handler.business
 
 import com.exec.business.dao.entity.BusinessPlanEntity
-import com.exec.business.dao.service.BusinessService
+import com.exec.business.dao.service.BusinessPlanService
 import com.exec.business.handler.user.UserHandler
 import com.exec.business.protocol.api.Request
 import com.exec.business.protocol.api.Response
@@ -17,13 +17,13 @@ import org.springframework.beans.factory.annotation.Autowired
 abstract class BusinessPlanHandler<in T : Request, out R : Response>: UserHandler<T, R>(){
 
     @Autowired
-    internal lateinit var businessService: BusinessService
+    internal lateinit var businessPlanService: BusinessPlanService
 
     @Autowired
     internal lateinit var mapper: Mapper
 
     fun getBusiness(id: String): BusinessPlanEntity {
-        val business = businessService.getById(id)
+        val business = businessPlanService.getById(id)
 
         if (business == null) {
             LOG.error("Business with id $id not found.")

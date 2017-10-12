@@ -14,7 +14,7 @@ open class DeleteBusinessPlanHandler: BusinessPlanHandler<DeleteBusinessPlanRequ
     override fun handle(request: DeleteBusinessPlanRequest): DeleteeBusinessPlanResponse {
         val user: UserEntity = getUser(request.rotingData!!.credentials!!.id)
         getBusiness(request.id)
-        businessService.delete(request.id)
+        businessPlanService.delete(request.id)
         LOG.info("User ${user.lastName}(${user.email}) deleted his business plan (plan id - ${request.id}).")
         return DeleteeBusinessPlanResponse()
     }
