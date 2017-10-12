@@ -14,7 +14,7 @@ import kotlin.streams.toList
  * Time: 8:37.
  */
 @Component
-open class GetBusinessesHandler : BusinessHandler<GetBusinessPlansRequest, GetBusinessPlansResponse>() {
+open class GetBusinessPlansHandler : BusinessHandler<GetBusinessPlansRequest, GetBusinessPlansResponse>() {
 
     @Autowired
     private lateinit var mapper: Mapper
