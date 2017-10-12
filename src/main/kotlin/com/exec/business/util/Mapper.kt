@@ -1,9 +1,9 @@
 package com.exec.business.util
 
-import com.exec.business.dao.entity.BusinessEntity
+import com.exec.business.dao.entity.BusinessPlanEntity
 import com.exec.business.dao.entity.QuestionEntity
 import com.exec.business.dao.entity.UserEntity
-import com.exec.business.protocol.dto.BusinessDTO
+import com.exec.business.protocol.dto.BusinessPlanDTO
 import com.exec.business.protocol.dto.QuestionDTO
 import com.exec.business.protocol.dto.UserDTO
 import org.springframework.stereotype.Component
@@ -36,18 +36,18 @@ open class Mapper {
             password = null
     )
 
-    fun mapBusiness(entity: BusinessEntity): BusinessDTO = BusinessDTO(
-            id = entity.id,
-            name = entity.name,
-            description = entity.description,
-            owner = entity.owner!!.id,
-            questions = entity.questions!!.stream().map {question -> mapQuestion(question) }.toList()
+    fun mapBusiness(planEntity: BusinessPlanEntity): BusinessPlanDTO = BusinessPlanDTO(
+            id = planEntity.id,
+            name = planEntity.name,
+            description = planEntity.description,
+            owner = planEntity.owner!!.id,
+            questions = planEntity.questions!!.stream().map { question -> mapQuestion(question) }.toList()
     )
 
-    fun revertBusiness(dto: BusinessDTO): BusinessEntity = BusinessEntity(
-            id = dto.id,
-            name = dto.name,
-            description = dto.description
+    fun revertBusiness(planDto: BusinessPlanDTO): BusinessPlanEntity = BusinessPlanEntity(
+            id = planDto.id,
+            name = planDto.name,
+            description = planDto.description
     )
 
     fun mapQuestion(entity: QuestionEntity): QuestionDTO = QuestionDTO(
@@ -57,10 +57,10 @@ open class Mapper {
             type = entity.type
     )
 
-    fun revertQuestion(dto: BusinessDTO): BusinessEntity = BusinessEntity(
-            id = dto.id,
-            name = dto.name,
-            description = dto.description
+    fun revertQuestion(planDto: BusinessPlanDTO): BusinessPlanEntity = BusinessPlanEntity(
+            id = planDto.id,
+            name = planDto.name,
+            description = planDto.description
     )
 
 }

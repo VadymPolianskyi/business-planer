@@ -1,6 +1,6 @@
 package com.exec.business.dao.service
 
-import com.exec.business.dao.entity.BusinessEntity
+import com.exec.business.dao.entity.BusinessPlanEntity
 import com.exec.business.dao.repository.BusinessRepository
 import org.springframework.stereotype.Component
 
@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component
  * Time: 21:31.
  */
 @Component
-open class BusinessService : GenericService<BusinessEntity, BusinessRepository>() {
-    fun findByOwner(owner: String): List<BusinessEntity> {
+open class BusinessService : GenericService<BusinessPlanEntity, BusinessRepository>() {
+    fun findByOwner(owner: String): List<BusinessPlanEntity> {
         return repository.findByOwner(owner)
     }
 }

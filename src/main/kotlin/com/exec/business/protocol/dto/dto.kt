@@ -18,7 +18,7 @@ data class UserDTO(
         val email: String?
 )
 
-data class BusinessDTO(
+data class BusinessPlanDTO(
         val id: String?,
         var name: String?,
         var description: String?,

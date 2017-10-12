@@ -1,6 +1,6 @@
 package com.exec.business.handler.business
 
-import com.exec.business.dao.entity.BusinessEntity
+import com.exec.business.dao.entity.BusinessPlanEntity
 import com.exec.business.dao.service.BusinessService
 import com.exec.business.handler.user.UserHandler
 import com.exec.business.protocol.api.Request
@@ -18,7 +18,7 @@ abstract class BusinessHandler<in T : Request, out R : Response>: UserHandler<T,
     @Autowired
     internal lateinit var businessService: BusinessService
 
-    fun getBusiness(id: String): BusinessEntity {
+    fun getBusiness(id: String): BusinessPlanEntity {
         val business = businessService.getById(id)
 
         if (business == null) {
@@ -26,7 +26,7 @@ abstract class BusinessHandler<in T : Request, out R : Response>: UserHandler<T,
             throw BusinessNotFoundException("Business with id $id not found.")
         }
 
-        LOG.info("Got business with id $id (${business.name} ${business.description} - ${business.owner}).")
+        LOG.info("Got businessPlan with id $id (${business.name} ${business.description} - ${business.owner}).")
         return business
     }
 }

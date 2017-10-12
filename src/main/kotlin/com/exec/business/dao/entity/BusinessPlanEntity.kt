@@ -9,8 +9,8 @@ import javax.persistence.*
  * Time: 7:32.
  */
 @Entity
-@Table(name = "business")
-class BusinessEntity(
+@Table(name = "businessPlan")
+class BusinessPlanEntity(
         override var id : String? = null,
 
         @Column(name = "name")

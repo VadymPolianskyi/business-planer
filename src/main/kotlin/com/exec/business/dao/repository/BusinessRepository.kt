@@ -1,12 +1,12 @@
 package com.exec.business.dao.repository
 
-import com.exec.business.dao.entity.BusinessEntity
+import com.exec.business.dao.entity.BusinessPlanEntity
 
 /**
  * Author: Vadym Polyanski;
  * Date: 22.09.17;
  * Time: 21:29.
  */
-interface BusinessRepository : BaseRepository<BusinessEntity>{
-    fun findByOwner(owner: String): List<BusinessEntity>
+interface BusinessRepository : BaseRepository<BusinessPlanEntity>{
+    fun findByOwner(owner: String): List<BusinessPlanEntity>
 }

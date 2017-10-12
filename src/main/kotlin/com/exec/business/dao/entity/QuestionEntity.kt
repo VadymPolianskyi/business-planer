@@ -15,7 +15,7 @@ class QuestionEntity(
         override var id: String? = null,
 
         @ManyToOne(fetch = FetchType.LAZY, cascade = arrayOf(CascadeType.ALL))
-        var business: BusinessEntity?,
+        var businessPlan: BusinessPlanEntity?,
 
         @Column(name = "priority")
         var priority: Int? = null,
