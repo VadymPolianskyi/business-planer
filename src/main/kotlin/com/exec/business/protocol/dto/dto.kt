@@ -30,5 +30,5 @@ data class QuestionDTO(
         val id: String?,
         var priority: Int?,
         var answer: String?,
-        var type: PlanStep?
+        var type: Int?
 )
