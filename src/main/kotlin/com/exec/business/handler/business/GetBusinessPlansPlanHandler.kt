@@ -14,10 +14,7 @@ import kotlin.streams.toList
  * Time: 8:37.
  */
 @Component
-open class GetBusinessPlansHandler : BusinessHandler<GetBusinessPlansRequest, GetBusinessPlansResponse>() {
-
-    @Autowired
-    private lateinit var mapper: Mapper
+open class GetBusinessPlansPlanHandler : BusinessPlanHandler<GetBusinessPlansRequest, GetBusinessPlansResponse>() {
 
     override fun handle(request: GetBusinessPlansRequest): GetBusinessPlansResponse {
         val user: UserEntity = getUser(request.rotingData.credentials!!.id)
@@ -25,6 +22,7 @@ open class GetBusinessPlansHandler : BusinessHandler<GetBusinessPlansRequest, Ge
         val businesses = businessService.findByOwner(user.id!!).stream()
                 .map { business -> mapper.mapBusiness(business) }.toList()
 
+        LOG.info("User ${user.lastName}(${user.email}) got his all business plans (count - ${businesses.size}).")
         return GetBusinessPlansResponse(businesses)
     }
 }

@@ -5,6 +5,7 @@ import com.exec.business.protocol.api.Response
 import com.exec.business.protocol.api.RotingData
 import com.exec.business.protocol.dto.BusinessPlanDTO
 import org.codehaus.jackson.annotate.JsonProperty
+import org.hibernate.validator.constraints.NotEmpty
 import javax.validation.Valid
 import javax.validation.constraints.NotNull
 
@@ -24,7 +25,7 @@ data class GetBusinessPlansResponse(
 
 //create
 data class CreateBusinessPlanRequest (
-        override val rotingData: RotingData,
+        override var rotingData: RotingData,
         @Valid
         @NotNull
         val businessPlan: BusinessPlanDTO
@@ -51,7 +52,11 @@ class DeleteeBusinessPlanResponse : Response()
 
 //read
 data class GetBusinessPlanRequest (
-        override val rotingData: RotingData
+        override val rotingData: RotingData,
+        @Valid
+        @NotNull
+        @NotEmpty
+        val planId: String
 ): Request()
 
 data class GetBusinessPlanResponse(

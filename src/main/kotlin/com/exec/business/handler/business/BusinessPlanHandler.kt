@@ -6,6 +6,7 @@ import com.exec.business.handler.user.UserHandler
 import com.exec.business.protocol.api.Request
 import com.exec.business.protocol.api.Response
 import com.exec.business.protocol.exception.BusinessNotFoundException
+import com.exec.business.util.Mapper
 import org.springframework.beans.factory.annotation.Autowired
 
 /**
@@ -13,10 +14,13 @@ import org.springframework.beans.factory.annotation.Autowired
  * Date: 22.09.17;
  * Time: 21:34.
  */
-abstract class BusinessHandler<in T : Request, out R : Response>: UserHandler<T, R>(){
+abstract class BusinessPlanHandler<in T : Request, out R : Response>: UserHandler<T, R>(){
 
     @Autowired
     internal lateinit var businessService: BusinessService
+
+    @Autowired
+    internal lateinit var mapper: Mapper
 
     fun getBusiness(id: String): BusinessPlanEntity {
         val business = businessService.getById(id)
