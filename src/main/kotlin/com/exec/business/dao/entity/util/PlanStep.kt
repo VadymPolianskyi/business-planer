@@ -9,9 +9,9 @@ enum class PlanStep(val title: String, val description: String) {
 
     STEP_1("Set the foundations",
             "Ask yourself some fundamental questions about your plan, " +
-                    "your planning, and your business. Answer them for yourself and your team. "),
+                    "your planning, and your businessPlan. Answer them for yourself and your team. "),
 
-    STEP_2("Know your business and your market",
+    STEP_2("Know your businessPlan and your market",
             "This is where you make sure you have good market analysis," +
                     " including segmentation and target segment strategy, " +
                     "competitive analysis, a good sense of standard costs and" +
@@ -38,7 +38,7 @@ enum class PlanStep(val title: String, val description: String) {
                     "expenses and assets you need. This leads of course to cash flow, which is vital."),
 
     STEP_5("Who does what, when. Call it commitment",
-            "Break the journey towards business goals into meaningful steps, with metrics" +
+            "Break the journey towards businessPlan goals into meaningful steps, with metrics" +
                     " — dates, deadlines, spending budgets, sales results — so you’ll be" +
                     " able to track. Bring in the people charged with getting things done," +
                     " and use discussions and planning process to develop commitment. Plans" +
@@ -48,8 +48,8 @@ enum class PlanStep(val title: String, val description: String) {
                     " steps to track."),
 
     STEP_6("Dress and polish as required",
-            "This step is where you stick to the business results, a form dictated by the function" +
-                    " for your business. If you need the formal plan, fill in the words that your" +
+            "This step is where you stick to the businessPlan results, a form dictated by the function" +
+                    " for your businessPlan. If you need the formal plan, fill in the words that your" +
                     " readers will look for, depending on the details; edit and polish, create the" +
                     " document you need. If you’re planning just for management and operations," +
                     " then make the important summaries available for the team members involved."),
