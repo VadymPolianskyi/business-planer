@@ -35,7 +35,7 @@ class CreateBusinessPlanResponse : Response()
 
 //update
 data class UpdateBusinessPlanRequest (
-        override val rotingData: RotingData,
+        override var rotingData: RotingData,
         @Valid
         @NotNull
         val businessPlan: BusinessPlanDTO
@@ -45,7 +45,8 @@ class UpdateBusinessPlanResponse : Response()
 
 //delete
 class DeleteBusinessPlanRequest(
-        override val rotingData: RotingData?
+        override val rotingData: RotingData?,
+        val id: String
 ) : Request()
 
 class DeleteeBusinessPlanResponse : Response()
