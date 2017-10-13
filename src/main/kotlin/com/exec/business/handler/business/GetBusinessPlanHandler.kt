@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component
  * Time: 22:16.
  */
 @Component
-open class GetBusinessPlanPlanHandler : BusinessPlanHandler<GetBusinessPlanRequest, GetBusinessPlanResponse>() {
+open class GetBusinessPlanHandler : BusinessPlanHandler<GetBusinessPlanRequest, GetBusinessPlanResponse>() {
 
     override fun handle(request: GetBusinessPlanRequest): GetBusinessPlanResponse {
         val user: UserEntity = getUser(request.rotingData.credentials!!.id)

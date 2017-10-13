@@ -27,13 +27,13 @@ class BusinessPlanController {
             @PathVariable id: String
     ): Response {
         val request = GetBusinessPlanRequest(RotingData(credentials), id)
-        return factory.get(GetBusinessPlanPlanHandler::class.java).handle(request)
+        return factory.get(GetBusinessPlanHandler::class.java).handle(request)
     }
 
     @GetMapping("/all")
     fun getAllBusinessPlans(@AuthenticationPrincipal credentials: UserCredentials): Response {
         val request = GetBusinessPlansRequest(RotingData(credentials))
-        return factory.get(GetBusinessPlansPlanHandler::class.java).handle(request)
+        return factory.get(GetQuestionHandler::class.java).handle(request)
     }
 
     @PostMapping
@@ -42,7 +42,7 @@ class BusinessPlanController {
             @RequestBody request: CreateBusinessPlanRequest
     ): Response {
         request.rotingData = RotingData(credentials)
-        return factory.get(CreateBusinessPlanPlanHandler::class.java).handle(request)
+        return factory.get(CreateQuestionHandler::class.java).handle(request)
     }
 
     @PutMapping
@@ -51,7 +51,7 @@ class BusinessPlanController {
             @RequestBody request: UpdateBusinessPlanRequest
     ): Response {
         request.rotingData = RotingData(credentials)
-        return factory.get(UpdateBusinessPlanHandler::class.java).handle(request)
+        return factory.get(UpdateQuestionHandler::class.java).handle(request)
     }
 
     @DeleteMapping("/{id}")
@@ -60,6 +60,6 @@ class BusinessPlanController {
             @PathVariable id: String
     ): Response {
         val request = DeleteBusinessPlanRequest(RotingData(credentials), id)
-        return factory.get(DeleteBusinessPlanHandler::class.java).handle(request)
+        return factory.get(DeleteQuestionHandler::class.java).handle(request)
     }
 }

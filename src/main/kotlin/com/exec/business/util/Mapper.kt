@@ -54,13 +54,13 @@ open class Mapper {
             id = entity.id,
             priority = entity.priority,
             answer = entity.answer,
-            type = entity.type
+            type = Tyentity.type
     )
 
-    fun revertQuestion(planDto: BusinessPlanDTO): BusinessPlanEntity = BusinessPlanEntity(
-            id = planDto.id,
-            name = planDto.name,
-            description = planDto.description
+    fun revertQuestion(dto: BusinessPlanDTO): QuestionEntity = QuestionEntity(
+            id = dto.id,
+            priority = dto.pr,
+            description = dto.description
     )
 
 }
