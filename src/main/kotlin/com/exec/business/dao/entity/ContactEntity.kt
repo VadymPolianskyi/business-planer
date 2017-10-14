@@ -1,9 +1,7 @@
 package com.exec.business.dao.entity
 
 import com.exec.business.dao.entity.api.BaseEntity
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.Table
+import javax.persistence.*
 
 /**
  * Author: Vadym Polyanski;
@@ -25,5 +23,8 @@ class ContactEntity(
         var email: String,
 
         @Column(name = "role")
-        var role: String
+        var role: String,
+
+        @ManyToMany(fetch = FetchType.LAZY, cascade = arrayOf(CascadeType.ALL))
+        var plan: BusinessPlanEntity
 ) :BaseEntity(id)
