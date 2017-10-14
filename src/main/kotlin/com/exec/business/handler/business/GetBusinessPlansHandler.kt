@@ -12,7 +12,7 @@ import kotlin.streams.toList
  * Time: 8:37.
  */
 @Component
-open class GetBusinessPlansPlanHandler : BusinessPlanHandler<GetBusinessPlansRequest, GetBusinessPlansResponse>() {
+open class GetBusinessPlansHandler : BusinessPlanHandler<GetBusinessPlansRequest, GetBusinessPlansResponse>() {
 
     override fun handle(request: GetBusinessPlansRequest): GetBusinessPlansResponse {
         val user: UserEntity = getUser(request.rotingData.credentials!!.id)

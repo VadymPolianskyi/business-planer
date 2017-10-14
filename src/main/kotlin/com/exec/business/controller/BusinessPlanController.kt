@@ -3,6 +3,8 @@ package com.exec.business.controller
 import com.exec.business.dao.entity.secure.UserCredentials
 import com.exec.business.handler.business.*
 import com.exec.business.handler.factory.Factory
+import com.exec.business.handler.business.CreateBusinessPlanHandler
+import com.exec.business.handler.business.GetBusinessPlansHandler
 import com.exec.business.protocol.*
 import com.exec.business.protocol.api.Response
 import com.exec.business.protocol.api.RotingData
@@ -27,13 +29,13 @@ class BusinessPlanController {
             @PathVariable id: String
     ): Response {
         val request = GetBusinessPlanRequest(RotingData(credentials), id)
-        return factory.get(GetBusinessPlanPlanHandler::class.java).handle(request)
+        return factory.get(GetBusinessPlanHandler::class.java).handle(request)
     }
 
     @GetMapping("/all")
     fun getAllBusinessPlans(@AuthenticationPrincipal credentials: UserCredentials): Response {
         val request = GetBusinessPlansRequest(RotingData(credentials))
-        return factory.get(GetBusinessPlansPlanHandler::class.java).handle(request)
+        return factory.get(GetBusinessPlansHandler::class.java).handle(request)
     }
 
     @PostMapping
@@ -42,7 +44,7 @@ class BusinessPlanController {
             @RequestBody request: CreateBusinessPlanRequest
     ): Response {
         request.rotingData = RotingData(credentials)
-        return factory.get(CreateBusinessPlanPlanHandler::class.java).handle(request)
+        return factory.get(CreateBusinessPlanHandler::class.java).handle(request)
     }
 
     @PutMapping

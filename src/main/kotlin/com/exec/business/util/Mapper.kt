@@ -3,6 +3,7 @@ package com.exec.business.util
 import com.exec.business.dao.entity.BusinessPlanEntity
 import com.exec.business.dao.entity.QuestionEntity
 import com.exec.business.dao.entity.UserEntity
+import com.exec.business.dao.entity.util.PlanStep
 import com.exec.business.protocol.dto.BusinessPlanDTO
 import com.exec.business.protocol.dto.QuestionDTO
 import com.exec.business.protocol.dto.UserDTO
@@ -52,15 +53,18 @@ open class Mapper {
 
     fun mapQuestion(entity: QuestionEntity): QuestionDTO = QuestionDTO(
             id = entity.id,
+            businessPlan = entity.businessPlan!!.id!!,
             priority = entity.priority,
             answer = entity.answer,
-            type = entity.type
+            type = entity.type.numger
     )
 
-    fun revertQuestion(planDto: BusinessPlanDTO): BusinessPlanEntity = BusinessPlanEntity(
-            id = planDto.id,
-            name = planDto.name,
-            description = planDto.description
+    fun revertQuestion(dto: QuestionDTO): QuestionEntity = QuestionEntity(
+            id = dto.id,
+            businessPlan = null,
+            priority = dto.priority,
+            answer = dto.answer,
+            type = PlanStep.values()[dto.type!!]
     )
 
 }
