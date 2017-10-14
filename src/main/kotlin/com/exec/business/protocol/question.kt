@@ -23,7 +23,7 @@ data class GetQuestionsRequest(
 ): Request()
 
 data class GetQuestionsResponse(
-        val ouestions: List<QuestionDTO>
+        val questions: List<QuestionDTO>
 ): Response()
 
 //create
@@ -31,10 +31,7 @@ data class CreateQuestionRequest (
         override var rotingData: RotingData,
         @Valid
         @NotNull
-        val question: QuestionDTO,
-        @Valid
-        @NotNull
-        val planId: String
+        val question: QuestionDTO
 ): Request()
 
 class CreateQuestionResponse : Response()
@@ -44,7 +41,7 @@ data class UpdateQuestionRequest (
         override var rotingData: RotingData,
         @Valid
         @NotNull
-        val Question: QuestionDTO
+        val question: QuestionDTO
 ): Request()
 
 class UpdateQuestionResponse : Response()
