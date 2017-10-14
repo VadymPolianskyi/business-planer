@@ -1,8 +1,8 @@
-package com.exec.business.handler.business
+package com.exec.business.handler.question
 
 import com.exec.business.dao.entity.UserEntity
-import com.exec.business.protocol.UpdateBusinessPlanRequest
-import com.exec.business.protocol.UpdateBusinessPlanResponse
+import com.exec.business.protocol.UpdateQuestionRequest
+import com.exec.business.protocol.UpdateQuestionResponse
 import org.springframework.stereotype.Component
 
 /**
@@ -11,19 +11,22 @@ import org.springframework.stereotype.Component
  * Time: 22:39.
  */
 @Component
-open class UpdateQuestionHandler : BusinessPlanHandler<UpdateBusinessPlanRequest, UpdateBusinessPlanResponse>() {
+open class UpdateQuestionHandler : QuestionHandler<UpdateQuestionRequest, UpdateQuestionResponse>() {
 
-    override fun handle(request: UpdateBusinessPlanRequest): UpdateBusinessPlanResponse {
+    override fun handle(request: UpdateQuestionRequest): UpdateQuestionResponse {
         val user: UserEntity = getUser(request.rotingData.credentials!!.id)
 
-        getBusiness(request.businessPlan.id!!)
+        val business = getBusiness(request.question.businessPlan)
+        getQuestion(request.question.id!!)
 
-        val businessPlan = mapper.revertBusinessPlan(request.businessPlan)
+        val question = mapper.revertQuestion(request.question)
 
-        businessPlanService.update(businessPlan)
+        question.businessPlan = business
 
-        LOG.info("User ${user.lastName}(${user.email}) updated his business plan (plan id - ${businessPlan.id}).")
-        return UpdateBusinessPlanResponse()
+        questionService.update(question)
+
+        LOG.info("User ${user.lastName}(${user.email}) updated his question (question id - ${question.id}).")
+        return UpdateQuestionResponse()
     }
 
 }
