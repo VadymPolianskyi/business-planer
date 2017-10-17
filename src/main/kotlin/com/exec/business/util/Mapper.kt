@@ -1,10 +1,12 @@
 package com.exec.business.util
 
 import com.exec.business.dao.entity.BusinessPlanEntity
+import com.exec.business.dao.entity.ContactEntity
 import com.exec.business.dao.entity.QuestionEntity
 import com.exec.business.dao.entity.UserEntity
 import com.exec.business.dao.entity.util.PlanStep
 import com.exec.business.protocol.dto.BusinessPlanDTO
+import com.exec.business.protocol.dto.ContactDTO
 import com.exec.business.protocol.dto.QuestionDTO
 import com.exec.business.protocol.dto.UserDTO
 import org.springframework.stereotype.Component
@@ -65,6 +67,24 @@ open class Mapper {
             priority = dto.priority,
             answer = dto.answer,
             type = PlanStep.values()[dto.type!!]
+    )
+
+    fun mapContact(entity: ContactEntity): ContactDTO = ContactDTO(
+            id = entity.id,
+            name = entity.name,
+            email = entity.email,
+            phoneNumber = entity.phoneNumber,
+            planId = entity.plan!!.id,
+            role = entity.role
+    )
+
+    fun revertContact(dto: ContactDTO): ContactEntity = ContactEntity(
+            id = dto.id,
+            name = dto.name,
+            email = dto.email,
+            phoneNumber = dto.phoneNumber,
+            plan = null,
+            role = dto.role
     )
 
 }

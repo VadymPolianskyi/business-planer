@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.*
  * Time: 23:03.
  */
 @RestController
-@RequestMapping("/login")
+@RequestMapping("/question")
 class QuestionController {
     @Autowired
     private lateinit var factory: Factory

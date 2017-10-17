@@ -33,3 +33,12 @@ data class QuestionDTO(
         var answer: String?,
         var type: Int?
 )
+
+data class ContactDTO(
+        val id: String?,
+        var name: String?,
+        var phoneNumber: String?,
+        var email: String?,
+        var role: String?,
+        var planId: String?
+)

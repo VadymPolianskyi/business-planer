@@ -1,9 +1,7 @@
 package com.exec.business.dao.entity
 
 import com.exec.business.dao.entity.api.BaseEntity
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.Table
+import javax.persistence.*
 
 /**
  * Author: Vadym Polyanski;
@@ -16,14 +14,17 @@ class ContactEntity(
         override var id: String? = null,
 
         @Column(name = "name")
-        var name: String,
+        var name: String?,
 
         @Column(name = "phone_number")
-        var phoneNumber: String,
+        var phoneNumber: String?,
 
         @Column(name = "email")
-        var email: String,
+        var email: String?,
 
         @Column(name = "role")
-        var role: String
+        var role: String?,
+
+        @ManyToMany(fetch = FetchType.LAZY, cascade = arrayOf(CascadeType.ALL))
+        var plan: BusinessPlanEntity?
 ) :BaseEntity(id)
