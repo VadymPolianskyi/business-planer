@@ -40,5 +40,5 @@ data class ContactDTO(
         var phoneNumber: String?,
         var email: String?,
         var role: String?,
-        var plan: String?
+        var planId: String?
 )
