@@ -58,6 +58,7 @@ open class Mapper {
             businessPlan = entity.businessPlan!!.id!!,
             priority = entity.priority,
             answer = entity.answer,
+            deadline = entity.deadline,
             type = entity.type.numger
     )
 
@@ -66,6 +67,7 @@ open class Mapper {
             businessPlan = null,
             priority = dto.priority,
             answer = dto.answer,
+            deadline = dto.deadline,
             type = PlanStep.values()[dto.type!!]
     )
 

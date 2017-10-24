@@ -31,6 +31,7 @@ data class QuestionDTO(
         var businessPlan: String,
         var priority: Int?,
         var answer: String?,
+        var deadline: Long?,
         var type: Int?
 )
 
