@@ -20,10 +20,10 @@ open class DeadLineNotificationService {
     @Autowired
     private lateinit var emailService: EmailService
 
-    fun addBusinessTask(question:QuestionEntity, deadLine: Long, user: UserEntity) {
+    fun addNotificationTask(question:QuestionEntity, user: UserEntity) {
 
-        val task: EmailTask = EmailTask(emailService, question, user)
+        val task = EmailTask(emailService, question, user)
 
-        executor.schedule(task, deadLine, TimeUnit.SECONDS)
+        executor.schedule(task, question.deadline!!, TimeUnit.SECONDS)
     }
 }
