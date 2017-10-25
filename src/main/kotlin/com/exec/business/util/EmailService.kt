@@ -1,14 +1,12 @@
 package com.exec.business.util
 
-import freemarker.template.Configuration;
-import freemarker.template.Template;
-import freemarker.template.TemplateException;
-import com.exec.business.dao.entity.QuestionEntity
+import freemarker.template.Configuration
+import freemarker.template.TemplateException
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.mail.javamail.JavaMailSender
 import org.springframework.mail.javamail.MimeMessageHelper
 import org.springframework.stereotype.Component
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils
-import org.springframework.beans.factory.annotation.Autowired
 import java.io.IOException
 import javax.mail.MessagingException
 
