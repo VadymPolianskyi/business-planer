@@ -25,6 +25,6 @@ class ContactEntity(
         @Column(name = "role")
         var role: String?,
 
-        @ManyToMany(fetch = FetchType.LAZY, cascade = arrayOf(CascadeType.ALL))
+        @ManyToOne(fetch = FetchType.LAZY, cascade = arrayOf(CascadeType.ALL))
         var plan: BusinessPlanEntity?
 ) :BaseEntity(id)
