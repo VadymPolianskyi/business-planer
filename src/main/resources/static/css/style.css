@@ -10,8 +10,9 @@
 }
 
 .list {
-    height: 100vh;
+    height: auto;
     padding: 20px;
+    min-height: 100vh;
 }
 
 .add-form {
