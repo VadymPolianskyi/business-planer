@@ -17,12 +17,38 @@
 
 .add-form {
     background-color: #fff7f1;
-    height: 100vh;
+    height: auto;
     padding: 20px;
+    min-height: 100vh;
 }
 
 .header {
-    background-color: #3a3939;
+    background-color: rgba(0, 0, 0, 0);
     padding-right: 20px;
     padding-left: 20px;
+}
+
+.text-head {
+    color: white;
+}
+
+nav {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.btn {
+    background-color: #522a01;
+}
+
+.select-block {
+    background-color: #ffffff4a;
+    border-radius: 4px;
+}
+
+.big-header {
+    background-size: cover;
+}
+
+.footer-cover {
+    background-size: cover;
 }
