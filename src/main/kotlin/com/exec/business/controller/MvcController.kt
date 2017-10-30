@@ -43,16 +43,6 @@ class MvcController {
         return "index"
     }
 
-    @RequestMapping("/login")
-    fun loginPage(): String {
-        return "login"
-    }
-
-    @RequestMapping("/register")
-    fun registerPage(): String {
-        return "register"
-    }
-
     @RequestMapping("/business")
     fun businessPage(): String {
         return "business"
