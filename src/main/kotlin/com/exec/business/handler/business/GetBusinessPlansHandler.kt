@@ -17,7 +17,7 @@ open class GetBusinessPlansHandler : BusinessPlanHandler<GetBusinessPlansRequest
     override fun handle(request: GetBusinessPlansRequest): GetBusinessPlansResponse {
         val user: UserEntity = getUser(request.rotingData.credentials!!.id)
 
-        val businesses = businessPlanService.findByOwner(user.id!!).stream()
+        val businesses = businessPlanService.findByOwner(user).stream()
                 .map { business -> mapper.mapBusinessPlan(business) }.toList()
 
         LOG.info("User ${user.lastName}(${user.email}) got his all business plans (count - ${businesses.size}).")
