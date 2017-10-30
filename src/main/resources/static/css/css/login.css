@@ -1,0 +1,29 @@
+.page-footer {
+    background-color: rgba(0, 0, 0, 0.33);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.login-cont {
+    background-color: #000000a6;
+    padding: 10px;
+}
+
+.login-text {
+    color: white;
+}
+
+.btn {
+    background-color: #88784ad4;
+}
+
+.btn:hover{
+    background-color: #e2d3a6d4;
+}
+
+
+.input-select-dropdown {
+    background-color: #ffffff75;
+}
