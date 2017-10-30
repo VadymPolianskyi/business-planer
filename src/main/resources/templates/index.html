@@ -27,136 +27,20 @@
         <h3 class="text-head">Your business plans:</h3>
 
         <div class="row">
-            <div class="col-sm-2 plan">
+            <div class="col-sm-2 plan" th:each="plan : ${businessPlans}">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Business plan 1</h4>
-                        <p class="card-text">Some example text some example text.</p>
+                        <h4 class="card-title" th:text="${plan.name}"></h4>
+                        <p class="card-text" th:text="${plan.description}"></p>
                         <div class="card-action">
-                            <a href="#">Edit</a>
-                            <a href="#">Show</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-2 plan">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Business plan 2</h4>
-                        <p class="card-text">Some example text some example text.</p>
-                        <div class="card-action">
-                            <a href="#">Edit</a>
-                            <a href="#">Show</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-2 plan">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Business plan 3</h4>
-                        <p class="card-text">Some example text some example text.</p>
-                        <div class="card-action">
-                            <a href="#">Edit</a>
-                            <a href="#">Show</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-2 plan">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Business plan 4</h4>
-                        <p class="card-text">Some example text some example text.</p>
-                        <div class="card-action">
-                            <a href="#">Edit</a>
-                            <a href="#">Show</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-2 plan">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Business plan 5</h4>
-                        <p class="card-text">Some example text some example text.</p>
-                        <div class="card-action">
-                            <a href="#">Edit</a>
-                            <a href="#">Show</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-2 plan">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Business plan 1</h4>
-                        <p class="card-text">Some example text some example text.</p>
-                        <div class="card-action">
-                            <a href="#">Edit</a>
-                            <a href="#">Show</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-2 plan">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Business plan 2</h4>
-                        <p class="card-text">Some example text some example text.</p>
-                        <div class="card-action">
-                            <a href="#">Edit</a>
-                            <a href="#">Show</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-2 plan">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Business plan 3</h4>
-                        <p class="card-text">Some example text some example text.</p>
-                        <div class="card-action">
-                            <a href="#">Edit</a>
-                            <a href="#">Show</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-2 plan">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Business plan 4</h4>
-                        <p class="card-text">Some example text some example text.</p>
-                        <div class="card-action">
-                            <a href="#">Edit</a>
-                            <a href="#">Show</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-2 plan">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Business plan 5</h4>
-                        <p class="card-text">Some example text some example text.</p>
-                        <div class="card-action">
-                            <a href="#">Edit</a>
-                            <a href="#">Show</a>
+                            <a th:href="@{/business-plan/update/} + ${plan.id}">Edit</a>
+                            <a th:href="@{/business-plan/} + ${plan.id}">Show</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 
@@ -181,62 +65,22 @@
                 </div>
             </div>
 
-            <h4>Items:</h4>
+            <h4>Plan Steps:</h4>
+            <br>
             <div class="row">
                 <div class="col-sm-1"></div>
                 <div class="col-sm-11">
-                    <div class = "row">
-                        <h5>Item 1</h5>
-                        <div class = "input-field col s12">
-                            <input id="item-1" type="text" class="validate">
-                            <label for = "item-1">First item</label>
-                        </div>
-                    </div>
-                    <div class = "row">
-                        <h5>Item 2</h5>
-                        <div class = "input-field col s12">
-                            <input id="item-2" type="text" class="validate">
-                            <label for = "item-2">Second item</label>
+
+                    <div class = "row write-item-area" th:each="step : ${planSteps}">
+                        <div class="col l6 s12">
+                            <h5 th:text="${step.number} + '. ' + ${step.title}"></h5>
+                            <div class = "input-field col s12">
+                                <textarea th:id="${step.number}" class = "materialize-textarea"></textarea>
+                                <label th:for = "${step.number}">Your notations</label>
+                            </div>
                         </div>
                     </div>
 
-                    <div class = "row">
-                        <h5>Item 3</h5>
-                        <div class = "input-field col s12">
-                            <input id="item-3" type="text" class="validate">
-                            <label for = "item-3">Third item</label>
-                        </div>
-                    </div>
-                    <div class = "row">
-                        <h5>Item 4</h5>
-                        <div class = "input-field col s12">
-                            <input id="item-4" type="text" class="validate">
-                            <label for = "item-4">Fourth item</label>
-                        </div>
-                    </div>
-
-                    <div class = "row">
-                        <h5>Item 5</h5>
-                        <div class = "input-field col s12">
-                            <input id="item-5" type="text" class="validate">
-                            <label for = "item-5">Fives item</label>
-                        </div>
-                    </div>
-                    <div class = "row">
-                        <h5>Item 6</h5>
-                        <div class = "input-field col s12">
-                            <input id="item-6" type="text" class="validate">
-                            <label for = "item-6">Sixes item</label>
-                        </div>
-                    </div>
-
-                    <div class = "row">
-                        <h5>Item 7</h5>
-                        <div class = "input-field col s12">
-                            <input id="item-7" type="text" class="validate">
-                            <label for = "item-7">Seventh item</label>
-                        </div>
-                    </div>
                 </div>
             </div>
             <button class="btn waves-effect waves-light" type="submit" name="action">Create</button>

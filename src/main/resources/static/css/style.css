@@ -52,3 +52,13 @@ nav {
 .footer-cover {
     background-size: cover;
 }
+
+.card {
+    width: 15em;
+    height: 15em;
+}
+
+.write-item-area {
+    background-color: rgba(105, 104, 104, 0.16);
+    border-radius: 10px;
+}
