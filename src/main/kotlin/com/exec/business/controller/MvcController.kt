@@ -28,4 +28,8 @@ class MvcController {
         return "register"
     }
 
+    @RequestMapping("/business")
+    fun businessPage(): String {
+        return "business"
+    }
 }
