@@ -59,7 +59,7 @@ open class Mapper {
             priority = entity.priority,
             answer = entity.answer,
             deadline = entity.deadline,
-            type = entity.type.numger
+            type = entity.type.number
     )
 
     fun revertQuestion(dto: QuestionDTO): QuestionEntity = QuestionEntity(
