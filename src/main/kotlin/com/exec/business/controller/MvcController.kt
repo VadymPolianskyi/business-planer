@@ -22,4 +22,10 @@ class MvcController {
     fun loginPage(): String {
         return "login"
     }
+
+    @RequestMapping("/register")
+    fun registerPage(): String {
+        return "register"
+    }
+
 }
