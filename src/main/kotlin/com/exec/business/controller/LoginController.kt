@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import javax.validation.Valid
 
 /**
  * Author: Vadym Polyanski;
@@ -18,14 +19,14 @@ import org.springframework.web.bind.annotation.RestController
  * Time: 22:15.
  */
 @RestController
-@RequestMapping("/login")
+@RequestMapping("/api")
 class LoginController {
 
     @Autowired
     private lateinit var factory: Factory
 
-    @PostMapping
-    fun login(@RequestBody request: LoginRequest): Response {
+    @PostMapping("/login")
+    fun login(@RequestBody @Valid request: LoginRequest): Response {
         return factory.get(LoginHandler::class.java).handle(request)
     }
 
