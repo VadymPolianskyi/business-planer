@@ -30,11 +30,11 @@ open class SecurityConfiguration : WebSecurityConfigurerAdapter() {
     @Throws(Exception::class)
     public override fun configure(http: HttpSecurity) {
         http.requestMatchers()
-                .antMatchers("/login/**", "/console/**", "/css/**", "/js/**", "/picture/**", "/business-planer/main")
+                .antMatchers("/login/**", "/console/**", "/css/**", "/js/**", "/picture/**", "/business-planer/**")
                 .and().formLogin()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/login/**", "/console/**", "/css/**", "/js/**", "/picture/**", "/business-planer/main").permitAll()
+                .antMatchers("/login/**", "/console/**", "/css/**", "/js/**", "/picture/**", "/business-planer/**").permitAll()
                 .anyRequest().authenticated().and().httpBasic()
         http.headers().frameOptions().disable() //for h2 console work;
         http.csrf().disable()

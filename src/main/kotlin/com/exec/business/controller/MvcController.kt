@@ -12,8 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping
 @Controller
 @RequestMapping("/business-planer")
 class MvcController {
+
     @RequestMapping("/main")
     fun mainPage(): String {
         return "index"
+    }
+
+    @RequestMapping("/login")
+    fun loginPage(): String {
+        return "login"
     }
 }
