@@ -17,28 +17,13 @@ function login(login, password) {
         }),
         success: function (response) {
             console.log('Login user', response);
-            var token = response.token;
-            sessionStorage.accessToken = token;
+            sessionStorage.accessToken = response.token;
 
-            response.set({
-                'Authorization': 'bearer ' + token
-            });
-            response.redirect('/business-planer/main');
-
-
+            window.location.href = "/business-planer/main"
         },
         error: function (error) {
             console.error('Error get user info', error);
-            // location.reload();
+            location.reload();
         }
     })
 }
-
-// var request = {
-//     url: '/business-planer/main',
-//     headers: { 'Authorization': 'bearer ' + token },
-//     success: function (data) {
-//     }
-// };
-// console.log(request);
-// $.ajax(request);
