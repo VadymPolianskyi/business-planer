@@ -14,8 +14,8 @@ $(function() {
             Authorization: "bearer" + sessionStorage.accessToken
         },
         success: function (response) {
-
             console.log('Got businessPlans', response.businessPlans);
+
             var usersPlans = response.businessPlans;
             for (var i = 0; i < usersPlans.length; i++) {
                 var plan = usersPlans[i];
@@ -28,7 +28,6 @@ $(function() {
             window.location.href = "/business-planer/login"
         }
     };
-
 
     $.ajax(buildRequest);
 
