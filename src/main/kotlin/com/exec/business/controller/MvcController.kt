@@ -1,15 +1,11 @@
 package com.exec.business.controller
 
-import com.exec.business.dao.entity.secure.UserCredentials
 import com.exec.business.dao.entity.util.PlanStep
 import com.exec.business.handler.business.GetBusinessPlansHandler
-import com.exec.business.protocol.GetBusinessPlansRequest
-import com.exec.business.protocol.api.RotingData
-import com.exec.business.protocol.dto.BusinessPlanDTO
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 
 /**
@@ -25,26 +21,28 @@ class MvcController {
     @Autowired
     private lateinit var getBusinessPlansHandler: GetBusinessPlansHandler
 
-    @RequestMapping("/main")
-    fun mainPage(model: Model, @AuthenticationPrincipal credentials: UserCredentials): String {
+
+    @GetMapping("/main")
+    fun mainPage(model: Model): String {
         val planSteps = PlanStep.values()
-        val plans: List<BusinessPlanDTO> = getBusinessPlansHandler.handle(GetBusinessPlansRequest(RotingData(credentials))).businessPlans
 
-
-        plans.map{plan -> {
-            if (plan.description!!.length > 100)
-                plan.description = plan.description!!.substring(0, 100)
-            }
-        }
-
-        model.addAttribute("businessPlans", plans)
         model.addAttribute("planSteps", planSteps)
 
         return "index"
     }
 
-    @RequestMapping("/business")
+    @GetMapping("/business")
     fun businessPage(): String {
         return "business"
+    }
+
+    @GetMapping("/login")
+    fun loginPage(): String {
+        return "login"
+    }
+
+    @GetMapping("/register")
+    fun registerPage(): String {
+        return "register"
     }
 }
