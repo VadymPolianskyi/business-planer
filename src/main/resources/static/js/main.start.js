@@ -22,7 +22,6 @@ $(function() {
             var usersPlans = response.businessPlans;
             for (var i = 0; i < usersPlans.length; i++) {
                 var plan = usersPlans[i];
-                console.log(i);
                 plansDiv.append(createPlanDiv(plan.name, plan.description, plan.id));
             }
         },
