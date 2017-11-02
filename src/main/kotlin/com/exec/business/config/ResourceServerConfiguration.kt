@@ -18,7 +18,8 @@ open class ResourceServerConfiguration : ResourceServerConfigurerAdapter() {
     override fun configure(http: HttpSecurity) {
         http.cors().and()
                 .csrf().disable().authorizeRequests()
-                .antMatchers("/api/login", "/api/register", "/start/**", "/console/**", "/css/**", "/js/**", "/picture/**").permitAll()
+                .antMatchers("/api/login", "/api/register",
+                        "/business-planer/**", "/console/**", "/css/**", "/js/**", "/picture/**").permitAll()
                 .anyRequest().authenticated().and()
                 .formLogin().and().httpBasic()
         http.headers().frameOptions().disable()//for h2 console work;
