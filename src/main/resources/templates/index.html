@@ -58,9 +58,9 @@
                 <div class="col-sm-1"></div>
                 <div class="col-sm-11">
 
-                    <div class = "row write-item-area" th:each="step : ${planSteps}">
+                    <div class = "row write-item-area question" th:each="step : ${planSteps}">
                         <div class="col l6 s12">
-                            <h5 th:text="${step.number} + '. ' + ${step.title}"></h5>
+                            <h5 th:text="${step.number} + '. ' + ${step.title}" class="step-header"></h5>
                             <div class = "input-field col s12">
                                 <textarea th:id="${step.number}" class = "materialize-textarea"></textarea>
                                 <label th:for = "${step.number}">Your notations</label>
@@ -70,7 +70,7 @@
 
                 </div>
             </div>
-            <button class="btn waves-effect waves-light" type="submit" name="action">Create</button>
+            <button class="btn waves-effect waves-light" id="create-business-btn" type="submit" name="action">Create</button>
         </form>
 
         <div class="col-sm-3"></div>
@@ -112,5 +112,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
 <script th:src="@{/js/main.start.js}"></script>
+<script th:src="@{/js/main.create.js}"></script>
 </body>
 </html>
