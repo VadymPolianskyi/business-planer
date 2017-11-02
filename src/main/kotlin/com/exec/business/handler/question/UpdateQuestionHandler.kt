@@ -16,7 +16,7 @@ open class UpdateQuestionHandler : QuestionHandler<UpdateQuestionRequest, Update
     override fun handle(request: UpdateQuestionRequest): UpdateQuestionResponse {
         val user: UserEntity = getUser(request.rotingData.credentials!!.id)
 
-        val business = getBusiness(request.question.businessPlan)
+        val business = getBusiness(request.question.businessPlan!!)
         getQuestion(request.question.id!!)
 
         val question = mapper.revertQuestion(request.question)
