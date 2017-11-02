@@ -25,17 +25,15 @@ data class GetBusinessPlansResponse(
 
 //create
 data class CreateBusinessPlanRequest (
-        override var rotingData: RotingData,
-        @Valid
-        @NotNull
-        val businessPlan: BusinessPlanDTO
+        val businessPlan: BusinessPlanDTO,
+        override var rotingData: RotingData?
 ): Request()
 
 class CreateBusinessPlanResponse : Response()
 
 //update
 data class UpdateBusinessPlanRequest (
-        override var rotingData: RotingData,
+        override var rotingData: RotingData?,
         @Valid
         @NotNull
         val businessPlan: BusinessPlanDTO
