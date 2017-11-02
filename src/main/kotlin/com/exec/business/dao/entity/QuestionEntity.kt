@@ -24,7 +24,7 @@ class QuestionEntity(
         var answer: String? = null,
 
         @Column(name = "deadline")
-        var deadline: Long? = null,
+        var deadline: Long? = 1609286400,
 
         @Enumerated(EnumType.STRING)
         var type: PlanStep

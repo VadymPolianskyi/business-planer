@@ -5,7 +5,7 @@ package com.exec.business.dao.entity.util
  * Date: 21.09.17;
  * Time: 7:45.
  */
-enum class PlanStep(val title: String, val description: String, val numger: Int) {
+enum class PlanStep(val title: String, val description: String, val number: Int) {
 
     STEP_1("Set the foundations",
             "Ask yourself some fundamental questions about your plan, " +

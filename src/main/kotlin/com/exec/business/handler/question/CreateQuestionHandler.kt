@@ -28,7 +28,7 @@ open class CreateQuestionHandler : QuestionHandler<CreateQuestionRequest, Create
             question.deadline = System.currentTimeMillis() + 10000
         }
 
-        question.businessPlan = getBusiness(request.question.businessPlan)
+        question.businessPlan = getBusiness(request.question.businessPlan!!)
 
         questionService.save(question)
 

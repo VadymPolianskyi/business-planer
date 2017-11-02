@@ -2,12 +2,116 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Business planer</title>
+    <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
     <link th:href="@{/css/style.css}" rel="stylesheet">
 </head>
 <body>
-Hello user!
 
-<!--<script th:src="@{/js/file.js}"></script>-->
+<div class="big-header" th:style="'background:url(' + @{/picture/back3.jpg} + '); background-size: cover;'" >
+    <nav>
+        <div class="nav-wrapper header">
+            <a class="navbar-brand" href="#"><img th:src="@{/picture/logo2.png}" alt="Logo" style="width: 23em;"></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><span class="navbar-text" id="phrase" style="font-family: 'Julius Sans One', sans-serif;">
+        BUILD ONLY PROPERLY BUSINESS
+    </span></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="list">
+
+        <h3 class="text-head">Your business plans:</h3>
+
+        <div class="row plans"></div>
+
+    </div>
+</div>
+
+
+<div class="add-form">
+    <div class="row">
+        <div class="col-sm-3"></div>
+
+        <form class="col-sm-6">
+            <h3>Create business plan</h3>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="business_name" type="text" class="validate">
+                    <label for="business_name">Business name</label>
+                </div>
+            </div>
+
+            <div class = "row">
+                <div class = "input-field col s12">
+                    <textarea id = "description" class = "materialize-textarea"></textarea>
+                    <label for = "description">Short description</label>
+                </div>
+            </div>
+
+            <h4>Plan Steps:</h4>
+            <br>
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-11">
+
+                    <div class = "row write-item-area question" th:each="step : ${planSteps}">
+                        <div class="col l6 s12">
+                            <h5 th:text="${step.number} + '. ' + ${step.title}" class="step-header"></h5>
+                            <div class = "input-field col s12">
+                                <textarea th:id="${step.number}" class = "materialize-textarea"></textarea>
+                                <label th:for = "${step.number}">Your notations</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <button class="btn waves-effect waves-light" id="create-business-btn" type="submit" name="action">Create</button>
+        </form>
+
+        <div class="col-sm-3"></div>
+    </div>
+</div>
+
+
+<div class="footer-cover">
+<footer class="page-footer" th:style="'background:url(' + @{/picture/footer.jpg} + '); background-size: cover;'">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Footer Content</h5>
+                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © 2017 by Vadym Polyanski
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+        </div>
+    </div>
+</footer>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+<script th:src="@{/js/main.start.js}"></script>
+<script th:src="@{/js/main.create.js}"></script>
 </body>
 </html>

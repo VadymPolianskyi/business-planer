@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component
 open class UpdateBusinessPlanHandler: BusinessPlanHandler<UpdateBusinessPlanRequest, UpdateBusinessPlanResponse>() {
 
     override fun handle(request: UpdateBusinessPlanRequest): UpdateBusinessPlanResponse {
-        val user: UserEntity = getUser(request.rotingData.credentials!!.id)
+        val user: UserEntity = getUser(request.rotingData!!.credentials!!.id)
 
         getBusiness(request.businessPlan.id!!)
 

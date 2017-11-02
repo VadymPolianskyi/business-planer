@@ -1,0 +1,64 @@
+#phrase {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row-reverse;
+}
+
+.plan {
+    margin-left: 2em;
+    margin-bottom: 1em;
+}
+
+.list {
+    height: auto;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.add-form {
+    background-color: #fff7f1;
+    height: auto;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.header {
+    background-color: rgba(0, 0, 0, 0);
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.text-head {
+    color: white;
+}
+
+nav {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.btn {
+    background-color: #522a01;
+}
+
+.select-block {
+    background-color: #ffffff4a;
+    border-radius: 4px;
+}
+
+.big-header {
+    background-size: cover;
+}
+
+.footer-cover {
+    background-size: cover;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+}
+
+.write-item-area {
+    background-color: rgba(105, 104, 104, 0.16);
+    border-radius: 10px;
+}

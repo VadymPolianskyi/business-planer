@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*
  * Time: 8:28.
  */
 @RestController
-@RequestMapping("/business-plan")
+@RequestMapping("/api/business-plan")
 class BusinessPlanController {
     @Autowired
     private lateinit var factory: Factory

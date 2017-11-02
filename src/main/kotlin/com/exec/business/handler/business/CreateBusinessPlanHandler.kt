@@ -20,11 +20,14 @@ open class CreateBusinessPlanHandler : BusinessPlanHandler<CreateBusinessPlanReq
     private lateinit var notificationService: DeadLineNotificationService
 
     override fun handle(request: CreateBusinessPlanRequest): CreateBusinessPlanResponse {
-        val user: UserEntity = getUser(request.rotingData.credentials!!.id)
+        val user: UserEntity = getUser(request.rotingData!!.credentials!!.id)
 
         val businessPlan = mapper.revertBusinessPlan(request.businessPlan)
 
+        businessPlan.owner = user
+
         businessPlanService.save(businessPlan)
+
 
         addQuestionsToDeadlineQueue(businessPlan.questions!!, user)
 

@@ -50,7 +50,8 @@ open class Mapper {
     fun revertBusinessPlan(dto: BusinessPlanDTO): BusinessPlanEntity = BusinessPlanEntity(
             id = dto.id,
             name = dto.name,
-            description = dto.description
+            description = dto.description,
+            questions = dto.questions!!.stream().map{question ->  revertQuestion(question)}.toList()
     )
 
     fun mapQuestion(entity: QuestionEntity): QuestionDTO = QuestionDTO(
@@ -59,7 +60,7 @@ open class Mapper {
             priority = entity.priority,
             answer = entity.answer,
             deadline = entity.deadline,
-            type = entity.type.numger
+            type = entity.type.number
     )
 
     fun revertQuestion(dto: QuestionDTO): QuestionEntity = QuestionEntity(
@@ -67,8 +68,8 @@ open class Mapper {
             businessPlan = null,
             priority = dto.priority,
             answer = dto.answer,
-            deadline = dto.deadline,
-            type = PlanStep.values()[dto.type!!]
+            deadline = dto.deadline?: 1609286400,
+            type = PlanStep.values()[dto.type!!-1]
     )
 
     fun mapContact(entity: ContactEntity): ContactDTO = ContactDTO(

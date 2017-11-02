@@ -1,6 +1,7 @@
 package com.exec.business.dao.repository
 
 import com.exec.business.dao.entity.BusinessPlanEntity
+import com.exec.business.dao.entity.UserEntity
 
 /**
  * Author: Vadym Polyanski;
@@ -8,5 +9,5 @@ import com.exec.business.dao.entity.BusinessPlanEntity
  * Time: 21:29.
  */
 interface BusinessRepository : BaseRepository<BusinessPlanEntity>{
-    fun findByOwner(owner: String): List<BusinessPlanEntity>
+    fun findByOwner(owner: UserEntity): List<BusinessPlanEntity>
 }
