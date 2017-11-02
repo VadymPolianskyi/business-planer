@@ -1,5 +1,8 @@
+var owner;
+
 $(function() {
     var plansDiv = $(".plans");
+    userInfo();
 
     if (sessionStorage.accessToken === undefined || sessionStorage.accessToken === ""){
         window.location.href = "/business-planer/login"
@@ -48,4 +51,25 @@ function createPlanDiv(name, description, id) {
         '                </div>\n' +
         '            </div>'
     );
+}
+
+function userInfo() {
+    var buildRequest = {
+        type: 'get',
+        url: '/api/user',
+        dataType: 'json',
+        contentType: "application/json",
+        headers: {
+            Authorization: "bearer" + sessionStorage.accessToken
+        },
+        success: function (response) {
+            console.log('Got user\'s info', response.userDTO);
+            owner = response.userDTO.id;
+        },
+        error: function (error) {
+            console.error('Error get user info', error);
+            window.location.href = "/business-planer/login"
+        }
+    };
+    $.ajax(buildRequest);
 }
