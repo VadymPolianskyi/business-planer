@@ -1,11 +1,14 @@
 package com.exec.business.controller
 
+import com.exec.business.dao.entity.BusinessPlanEntity
 import com.exec.business.dao.entity.util.PlanStep
-import com.exec.business.handler.business.GetBusinessPlansHandler
+import com.exec.business.dao.service.BusinessPlanService
+import com.exec.business.util.Mapper
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 
 /**
@@ -19,7 +22,9 @@ import org.springframework.web.bind.annotation.RequestMapping
 class MvcController {
 
     @Autowired
-    private lateinit var getBusinessPlansHandler: GetBusinessPlansHandler
+    private lateinit var businessPlanService: BusinessPlanService
+    @Autowired
+    private lateinit var mapper: Mapper
 
 
     @GetMapping("/main")
@@ -31,8 +36,15 @@ class MvcController {
         return "index"
     }
 
-    @GetMapping("/business")
-    fun businessPage(): String {
+    @GetMapping("/business/{id}")
+    fun businessPage(
+            @PathVariable id: String,
+            model: Model): String {
+
+        var businessPlan: BusinessPlanEntity? = businessPlanService.getById(id) ?: return "redirect: /main"
+
+        model.addAttribute("plan", mapper.mapBusinessPlan(businessPlan!!))
+
         return "business"
     }
 

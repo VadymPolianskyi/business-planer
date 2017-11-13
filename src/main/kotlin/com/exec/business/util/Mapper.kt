@@ -56,7 +56,7 @@ open class Mapper {
 
     fun mapQuestion(entity: QuestionEntity): QuestionDTO = QuestionDTO(
             id = entity.id,
-            businessPlan = entity.businessPlan!!.id!!,
+            businessPlan = entity.businessPlan?.id,
             priority = entity.priority,
             answer = entity.answer,
             deadline = entity.deadline,

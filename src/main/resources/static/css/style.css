@@ -62,3 +62,11 @@ nav {
     background-color: rgba(105, 104, 104, 0.16);
     border-radius: 10px;
 }
+
+.validate {
+    color: white;
+}
+
+#business_name {
+    color: black;
+}

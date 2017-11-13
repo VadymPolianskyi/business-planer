@@ -20,7 +20,7 @@ class QuestionEntity(
         @Column(name = "priority")
         var priority: Int? = null,
 
-        @Column(name = "answer")
+        @Column(name = "answer", length = 2048)
         var answer: String? = null,
 
         @Column(name = "deadline")

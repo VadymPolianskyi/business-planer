@@ -1,15 +1,10 @@
 package com.exec.business.controller
 
 import com.exec.business.dao.entity.secure.UserCredentials
-import com.exec.business.handler.question.CreateQuestionHandler
-import com.exec.business.handler.question.GetQuestionsHandler
 import com.exec.business.handler.factory.Factory
-import com.exec.business.handler.question.DeleteQuestionHandler
-import com.exec.business.handler.question.UpdateQuestionHandler
-import com.exec.business.protocol.CreateQuestionRequest
-import com.exec.business.protocol.DeleteQuestionRequest
-import com.exec.business.protocol.GetQuestionsRequest
-import com.exec.business.protocol.UpdateQuestionRequest
+import com.exec.business.handler.question.*
+import com.exec.business.protocol.*
+import com.exec.business.protocol.api.Request
 import com.exec.business.protocol.api.Response
 import com.exec.business.protocol.api.RotingData
 import org.springframework.beans.factory.annotation.Autowired
@@ -22,7 +17,7 @@ import org.springframework.web.bind.annotation.*
  * Time: 23:03.
  */
 @RestController
-@RequestMapping("/question")
+@RequestMapping("/api/question")
 class QuestionController {
     @Autowired
     private lateinit var factory: Factory
@@ -62,5 +57,13 @@ class QuestionController {
         val request = DeleteQuestionRequest(RotingData(credentials), id)
 
         return factory.get(DeleteQuestionHandler::class.java).handle(request)
+    }
+
+    @GetMapping("/types")
+    fun allQuestionTypes(
+            @AuthenticationPrincipal credentials: UserCredentials
+    ): Response {
+        return factory.get(AllTypesHandler::class.java).handle(AllTypesRequest(RotingData(credentials)))
+
     }
 }
