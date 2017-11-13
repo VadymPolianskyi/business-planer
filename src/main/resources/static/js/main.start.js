@@ -39,8 +39,8 @@ function createPlanDiv(name, description, id) {
         '                        <h4 class="card-title">' + name + '</h4>\n' +
         '                        <p class="card-text"> ' + description + '</p>\n' +
         '                        <div class="card-action">\n' +
-        '                            <a href="business-plan/update/' + id + '">Edit</a>\n' +
-        '                            <a href="business-plan/' + id + '">Show</a>\n' +
+        // '                            <a href="update/' + id + '">Edit</a>\n' +
+        '                            <a href="business/' + id + '">Show</a>\n' +
         '                        </div>\n' +
         '                    </div>\n' +
         '                </div>\n' +
