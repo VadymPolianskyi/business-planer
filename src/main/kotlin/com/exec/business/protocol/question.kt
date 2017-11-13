@@ -5,6 +5,7 @@ import com.exec.business.protocol.api.Response
 import com.exec.business.protocol.api.RotingData
 import com.exec.business.protocol.dto.QuestionDTO
 import org.hibernate.validator.constraints.NotEmpty
+import java.util.stream.Stream
 import javax.validation.Valid
 import javax.validation.constraints.NotNull
 
@@ -53,3 +54,12 @@ class DeleteQuestionRequest(
 ) : Request()
 
 class DeleteeQuestionResponse : Response()
+
+class AllTypesRequest(
+        override val rotingData: RotingData?
+) : Request()
+
+data class AllTypesResponse(
+        val types: List<String>
+): Response()
+
