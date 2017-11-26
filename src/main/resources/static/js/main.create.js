@@ -49,8 +49,10 @@ function createQuestion(element) {
     var type = $(element).find('.step-header').text();
     type = type.substr(0, 1);
     var ansverPattern = '#' + type;
+    var ansverDeadLinePattern = '#' + type + 'date';
     return {
         priority: parseInt(type),
+        deadline: new Date($(ansverDeadLinePattern)[0].value).getTime(),
         answer: $(element).find(ansverPattern).val(),
         type: parseInt(type)
     };

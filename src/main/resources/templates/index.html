@@ -65,6 +65,10 @@
                                 <textarea th:id="${step.number}" class = "materialize-textarea"></textarea>
                                 <label th:for = "${step.number}">Your notations</label>
                             </div>
+                            <div class = "input-field col s12">
+                                <input th:id="${step.number} + 'date'" type="date">
+                            </div>
+
                         </div>
                     </div>
 
