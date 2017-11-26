@@ -17,7 +17,7 @@ class EmailTask(private val emailService: EmailService, private val questionEnti
     override fun run() {
         if (user.email != null) {
             val data = DeadLineData(questionEntity.type.title,
-                    questionEntity.answer, user.firstName, System.currentTimeMillis())
+                    questionEntity.answer, user.firstName, questionEntity.deadline!!)
             emailService.sendMessage(user.email!!, "dead-line", data)
         }
     }
